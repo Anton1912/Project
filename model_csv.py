@@ -38,7 +38,10 @@ def csv_reader_item_character(file):
             except IntegrityError:
                 pass
 
-
-
+def csv_dict_writer(file, data):
+    with open(file, "w", newline="") as out_file:
+        writer = csv.DictWriter(out_file, delimiter=";")
+        for row in data:
+            writer.writerows(row)
 
 
