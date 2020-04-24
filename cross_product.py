@@ -28,15 +28,17 @@ if __name__ == "__main__":
         if collection_list[0] in product_dict[keys]:
             cross.append(keys)
         else:
-            cross_product.append(list(cross))
-            cross.clear()
-            del collection_list[0]
+            if len(cross) > 1:
+                cross_product.append(list(cross))
+                cross.clear()
+                del collection_list[0]
+            else:
+                cross.clear()
+                del collection_list[0]
             continue
 with open("cross_product.csv", "w") as out_file:
     writer = csv.writer(out_file, delimiter=";")
     for row in cross_product:
         writer.writerow(row)
-
-
 
 
